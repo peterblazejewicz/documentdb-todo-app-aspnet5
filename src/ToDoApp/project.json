@@ -6,7 +6,6 @@
   "tooling": {
     "defaultNamespace": "ToDoApp"
   },
-
   "dependencies": {
     "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
@@ -15,22 +14,19 @@
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
     "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
     "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.FileProviderExtensions" : "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final"
+    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
+    "Microsoft.Azure.DocumentDB": "1.5.2"
   },
-
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
   },
-
   "frameworks": {
-    "dnx451": {},
-    "dnxcore50": {}
+    "dnx451": {}
   },
-
   "exclude": [
     "wwwroot",
     "node_modules",
@@ -44,9 +40,14 @@
     "**.vspscc"
   ],
   "scripts": {
-    "prepublish": [
+    "postrestore": [
       "npm install",
       "bower install",
+      "gulp bower",
+      "gulp clean",
+      "gulp min"
+    ],
+    "postbuild": [
       "gulp clean",
       "gulp min"
     ]

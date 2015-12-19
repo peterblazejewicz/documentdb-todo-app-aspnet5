@@ -1,9 +1,9 @@
 {
-	"sources": [
-		"src"
-	],
-	"sdk": {
-		"runtime": "dnx451",
-		"version": "1.0.0-rc1-final"
-	}
+  "sources": [
+    "src"
+  ],
+  "sdk": {
+    "runtime": "dnx451",
+    "version": "1.0.0-rc1-final"
+  }
 }
