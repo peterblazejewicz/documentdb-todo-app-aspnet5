@@ -1,13 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using ToDoApp.Services;
+using ToDoApp.Models;
 
 namespace ToDoApp.Controllers
 {
     public class HomeController : Controller
     {
+
+        public HomeController(IDocumentDBRepository<Item> db)
+        {
+            this.db = db;
+        }
         public IActionResult Index()
         {
             return View();
@@ -24,5 +27,6 @@ namespace ToDoApp.Controllers
         {
             return View();
         }
+        private IDocumentDBRepository<Item> db;
     }
 }

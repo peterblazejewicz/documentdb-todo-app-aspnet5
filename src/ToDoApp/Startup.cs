@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ToDoApp.Models;
+using ToDoApp.Services;
 
 namespace ToDoApp
 {
@@ -17,6 +15,8 @@ namespace ToDoApp
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddUserSecrets()
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -26,8 +26,12 @@ namespace ToDoApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
+            services.Configure<DocumentDbOptions>(Configuration.GetSection("Azure:DocumentDb"));
             // Add framework services.
             services.AddMvc();
+            services.AddSingleton<IDocumentDbContext, DocumentDbContext>();
+            services.AddSingleton<IDocumentDBRepository<Item>, DocumentDBRepository<Item>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

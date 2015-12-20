@@ -1,5 +1,6 @@
 {
   "version": "1.0.0-*",
+  "userSecretsId": "aspnet5-ToDoApp-99a30245-d910-41b4-93a9-935d1c704a46",
   "compilationOptions": {
     "emitEntryPoint": true
   },
@@ -16,10 +17,12 @@
     "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
+    "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "Microsoft.Azure.DocumentDB": "1.5.2"
+    "Microsoft.Azure.DocumentDB": "1.5.2",
+    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc1-final"
   },
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
