@@ -22,7 +22,10 @@ namespace ToDoApp.Services
                 if (client == null)
                 {
                     Uri endpointUri = new Uri(Options.Value.EndPoint);
-                    client = new DocumentClient(endpointUri, Options.Value.AuthKey);
+                    client = new DocumentClient(endpointUri, Options.Value.AuthKey, new ConnectionPolicy {
+                      ConnectionMode = ConnectionMode.Direct,
+                      ConnectionProtocol = Protocol.Tcp
+                    });
                 }
 
                 return client;
